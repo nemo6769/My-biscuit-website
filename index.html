@@ -1,28 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My First Website</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EXCOTIC BUTTERS Custom Biscuits</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #111;
-      color: #eee;
-      text-align: center;
-      padding-top: 100px;
+    :root {
+      --bg: #f7f2ec;
+      --mint: #b9f6d7;
+      --pink: #ffd1dc;
+      --cream: #fff6e6;
+      --brown: #8b6a4a;
+      --dark: #2f3a2e;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Arial", sans-serif;
+      color: var(--dark);
+      overflow-x: hidden;
+      background: var(--bg);
+    }
+
+    /* ---------------------------
+       Parallax Enchanted Forest
+    ----------------------------*/
+    .parallax {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.8);
+      z-index: -2;
+      transform: translateZ(0);
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.5);
+      z-index: -1;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 20px;
+      position: relative;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--dark);
+      font-family: "Comic Sans MS", "Arial", sans-serif;
+    }
+
+    nav a {
+      margin-left: 15px;
+      text-decoration: none;
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .bubble {
+      border-radius: 40px;
+      padding: 25px;
+      background: rgba(255,255,255,0.75);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+      border: 2px solid rgba(139,106,74,0.15);
+    }
+
+    .hero {
+      margin-top: 20px;
+      padding: 40px;
+      border-radius: 45px;
+      background: linear-gradient(135deg, var(--mint), var(--pink));
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero h1 {
+      font-size: 46px;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 0 rgba(255,255,255,0.8);
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 30px;
+      border: none;
+      background: var(--cream);
+      color: var(--dark);
+      font-weight: 700;
       cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .section {
+      margin-top: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .card {
+      padding: 20px;
+      border-radius: 30px;
+      background: var(--cream);
+      border: 2px solid rgba(139,106,74,0.12);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      font-size: 14px;
+      color: #4b4b4b;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
+
 <body>
-  <h1>Hello, internet 👋</h1>
-  <p>This website is online.</p>
-  <button onclick="alert('You clicked me!')">
-    Click me
-  </button>
+
+  <!-- Parallax background -->
+  <div class="parallax"></div>
+  <div class="overlay"></div>
+
+  <div class="container">
+    <header>
+      <div class="logo">Excotic butters</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#menu">Menu</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <section class="hero bubble">
+      <h1>Excotic buttery biscuits</h1>
+      <p>Soft, warm and oozing with flavour inside your mouth!!!</p>
+      <button class="btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+        Order Now
+      </button>
+    </section>
+
+    <section id="about" class="section bubble">
+      <h2>About Us</h2>
+      <p>
+        We bake biscuits to satisfy your every need. Each biscuit GLAZED with our secret recipe and love.
+      </p>
+    </section>
+
+    <section id="menu" class="section">
+      <h2>ME N U</h2>
+      <div class="grid">
+        <div class="card bubble">
+          <img src="https://picsum.photos/300/200?random=1" alt="Cake 1">
+          <h3>Warm, Long and Hard</h3>
+          <p>A long butter biscuits that leaves a suprise inside your mouth!</p>
+        </div>
+        <div class="card bubble">
+          <img src="https://picsum.photos/300/200?random=2" alt="Cake 2">
+          <h3>The dark one</h3>
+          <p>This one STEALS...with flavour.</p>
+        </div>
+        <div class="card bubble">
+          <img src="https://picsum.photos/300/200?random=3" alt="Cake 3">
+          <h3>Mommys good biscuit</h3>
+          <p>A submissive Lil biscuit that barks with joy!</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section bubble">
+      <h2>Contact & Order</h2>
+      <p>Send your cake idea and we’ll reply within 24 hours.</p>
+
+      <form>
+        <input type="text" placeholder="Your Name" style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 20px; border: 2px solid rgba(139,106,74,0.2);" />
+        <input type="email" placeholder="Your Email" style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 20px; border: 2px solid rgba(139,106,74,0.2);" />
+        <textarea placeholder="Cake details (size, flavors, design)" style="width: 100%; padding: 12px; margin: 8px 0; border-radius: 20px; border: 2px solid rgba(139,106,74,0.2);"></textarea>
+        <button class="btn" type="button" onclick="alert('Thanks! We will contact you soon 😊')">Send</button>
+      </form>
+    </section>
+  </div>
 </body>
 </html>
